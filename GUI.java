@@ -53,7 +53,7 @@ for(int i=0;i<3;i++)
 			inputs[i][j].setBackground(new Color(240,240,240));
 			inputs[i][j].setHorizontalAlignment(JTextField.CENTER);
 			inputs[i][j].setFont(new Font("Monospaced",Font.BOLD,21));
-			
+			inputs[i][j].setFocusable(true);
 			inputs[i][j].addActionListener(new Listener(inputs[i][j]));
 			inputs[i][j].addKeyListener(new keylistener());
 			inputs[i][j].setName(i+""+j+"");
@@ -141,24 +141,34 @@ private class Listener implements ActionListener
 private class keylistener implements KeyListener
 {
 
+
 	   public void keyTyped(KeyEvent e) {
+//    	inputs[2][6].requestFocusInWindow();
+
         //System.out.println(e);
         System.out.println(e);
+          if(e.getKeyChar() == 'a')
+        {
+        	inputs[2][6].requestFocusInWindow();
+        	//e.consume();
+        }
     }
 
     /** Handle the key-pressed event from the text field. */
     public void keyPressed(KeyEvent e) {
-        //System.out.println(e);
+    //   inputs[2][6].requestFocusInWindow();
+
         String index=((JTextField) e.getSource()).getName();
         System.out.println(index.charAt(0)+"_"+index.charAt(1));
         System.out.println(((JTextField) e.getSource()).getName());
-		//System.out.println(e.getActionCommand());
-
+        int i = (int) index.charAt(0);
+        int j = (int) index.charAt(1);
+      
     }
 
     /** Handle the key-released event from the text field. */
     public void keyReleased(KeyEvent e) {
-        //System.out.println(e);
+       // inputs[2][6].requestFocusInWindow();
     }
 
 
