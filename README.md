@@ -1,2 +1,2 @@
 # Sudoku_Java
-Sudoku in Java
+Sudoku Solver in Java
