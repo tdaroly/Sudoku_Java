@@ -126,7 +126,8 @@ private class Listener implements ActionListener
 
 	public void actionPerformed(ActionEvent e)
 	{
-		
+		String index=((JTextField) e.getSource()).getName();
+		System.out.println(index[0]+"_"+index[1]);
 		System.out.println("Something is happening");
 		System.out.println(((JTextField) e.getSource()).getName());
 		System.out.println(e.getActionCommand());
