@@ -126,8 +126,8 @@ private class Listener implements ActionListener
 
 	public void actionPerformed(ActionEvent e)
 	{
-		String index=((JTextField) e.getSource()).getName();
-		System.out.println(index[0]+"_"+index[1]);
+		
+		
 		System.out.println("Something is happening");
 		System.out.println(((JTextField) e.getSource()).getName());
 		System.out.println(e.getActionCommand());
@@ -149,6 +149,8 @@ private class keylistener implements KeyListener
     /** Handle the key-pressed event from the text field. */
     public void keyPressed(KeyEvent e) {
         //System.out.println(e);
+        String index=((JTextField) e.getSource()).getName();
+        System.out.println(index.charAt(0)+"_"+index.charAt(1));
         System.out.println(((JTextField) e.getSource()).getName());
 		//System.out.println(e.getActionCommand());
 
