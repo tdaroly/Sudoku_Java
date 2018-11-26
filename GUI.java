@@ -19,14 +19,26 @@ public class GUI extends JFrame
 
       private JTextField[][] inputs = new JTextField[9][9];
       private JPanel[][] borders = new JPanel[3][3];
-    	  
+      private JPanel center_grid;
+      private JPanel resetbutton;
+      private JTextField reset;
 public GUI()
 {
 
 	super();
 	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	setLayout(new GridLayout(3,3));
-	setSize(900,900);
+	//setLayout(new GridLayout(3,3));
+	setLayout(new BorderLayout());
+	setSize(900,900);	
+	center_grid=new JPanel();
+	center_grid.setLayout(new GridLayout(3,3));
+	add(center_grid,BorderLayout.CENTER);
+	resetbutton = new JPanel();
+	add(resetbutton,BorderLayout.SOUTH);	
+	reset = new JTextField("Type 'c' to Check work");
+	reset.addKeyListener(new keylistener());
+	reset.setName("taher");
+	resetbutton.add(reset);
 	
 
 //	JPanel pane = new JPanel();
@@ -38,7 +50,7 @@ for(int i=0;i<3;i++)
 		borders[i][j] = new JPanel();
 		borders[i][j].setLayout(new GridLayout(3,3));
 		borders[i][j].setBorder(BorderFactory.createLineBorder(Color.black));
-		add(borders[i][j]);
+		center_grid.add(borders[i][j]);
 	}
 
 
