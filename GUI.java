@@ -49,16 +49,25 @@ for(int i=0;i<3;i++)
 			
 
 			inputs[i][j] = new JTextField();
-			inputs[i][j].setBorder(BorderFactory.createLineBorder(Color.black));
+			inputs[i][j].setBorder(BorderFactory.createLineBorder(new Color(214,212,247)));
 			inputs[i][j].setBackground(new Color(240,240,240));
 			inputs[i][j].setHorizontalAlignment(JTextField.CENTER);
 			inputs[i][j].setFont(new Font("Monospaced",Font.BOLD,21));
-			inputs[i][j].setText(puzzle[i][j]+"");
+			
 			inputs[i][j].addActionListener(new Listener(inputs[i][j]));
 			inputs[i][j].addKeyListener(new keylistener());
 			inputs[i][j].setName(i+""+j+"");
-			inputs[i][j].setEditable(true);
+			if(puzzle[i][j]<0)
+			{
+				inputs[i][j].setText("");
+				inputs[i][j].setEditable(true);			
+			}
+			else{
 
+
+			inputs[i][j].setText(puzzle[i][j]+"");
+			inputs[i][j].setEditable(false);
+				}
 			
 			//borders[(i)%3][(j)%3].add(inputs[i][j]);
 
@@ -133,6 +142,7 @@ private class keylistener implements KeyListener
 
 	   public void keyTyped(KeyEvent e) {
         //System.out.println(e);
+        System.out.println(e);
     }
 
     /** Handle the key-pressed event from the text field. */
