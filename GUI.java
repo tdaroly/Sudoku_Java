@@ -32,7 +32,8 @@ public GUI()
 			inputs[i][j] = new JTextField();
 			inputs[i][j].setText(puzzle[i][j]+"");
 			inputs[i][j].addActionListener(new Listener(inputs[i][j]));
-			inputs[i][j].setName("input"+i+j);
+			inputs[i][j].addKeyListener(new keylistener());
+			inputs[i][j].setName(i+""+j+"");
 			add(inputs[i][j]);
 
 
@@ -63,6 +64,31 @@ private class Listener implements ActionListener
 		System.out.println(e.getActionCommand());
 		
 	}	
+
+
+}
+
+
+private class keylistener implements KeyListener
+{
+
+	   public void keyTyped(KeyEvent e) {
+        //System.out.println(e);
+    }
+
+    /** Handle the key-pressed event from the text field. */
+    public void keyPressed(KeyEvent e) {
+        //System.out.println(e);
+        System.out.println(((JTextField) e.getSource()).getName());
+		//System.out.println(e.getActionCommand());
+
+    }
+
+    /** Handle the key-released event from the text field. */
+    public void keyReleased(KeyEvent e) {
+        //System.out.println(e);
+    }
+
 
 
 }
