@@ -49,11 +49,16 @@ for(int i=0;i<3;i++)
 			
 
 			inputs[i][j] = new JTextField();
+			inputs[i][j].setBorder(BorderFactory.createLineBorder(Color.black));
+			inputs[i][j].setBackground(new Color(240,240,240));
+			inputs[i][j].setHorizontalAlignment(JTextField.CENTER);
+			inputs[i][j].setFont(new Font("Monospaced",Font.BOLD,21));
 			inputs[i][j].setText(puzzle[i][j]+"");
 			inputs[i][j].addActionListener(new Listener(inputs[i][j]));
 			inputs[i][j].addKeyListener(new keylistener());
 			inputs[i][j].setName(i+""+j+"");
 			inputs[i][j].setEditable(true);
+
 			
 			//borders[(i)%3][(j)%3].add(inputs[i][j]);
 
