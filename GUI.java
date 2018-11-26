@@ -44,15 +44,13 @@ for(int i=0;i<3;i++)
 	for(int i=0;i<9;i++)
 		for(int j=0;j<9;j++)
 		{
-			
-
-			
-
+				
 			inputs[i][j] = new JTextField();
 			inputs[i][j].setBorder(BorderFactory.createLineBorder(new Color(214,212,247)));
 			inputs[i][j].setBackground(new Color(240,240,240));
 			inputs[i][j].setHorizontalAlignment(JTextField.CENTER);
 			inputs[i][j].setFont(new Font("Monospaced",Font.BOLD,21));
+			inputs[i][j].setForeground(Color.GREEN);
 			inputs[i][j].setFocusable(true);
 			inputs[i][j].addActionListener(new Listener(inputs[i][j]));
 			inputs[i][j].addKeyListener(new keylistener());
@@ -157,7 +155,8 @@ private class keylistener implements KeyListener
     /** Handle the key-pressed event from the text field. */
     public void keyPressed(KeyEvent e) {
     //   inputs[2][6].requestFocusInWindow();
-
+    	int keyCode = e.getKeyCode();
+    	if(keyCode == e.VK_UP){System.out.println("Hello Friend");}
         String index=((JTextField) e.getSource()).getName();
         System.out.println(index.charAt(0)+"_"+index.charAt(1));
         System.out.println(((JTextField) e.getSource()).getName());
