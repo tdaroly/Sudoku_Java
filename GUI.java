@@ -24,13 +24,21 @@ public GUI()
 
 	super();
 	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	setLayout(new GridLayout(9,9));
+	setLayout(new GridLayout(3,3));
 	setSize(900,900);
 	
 
-	JPanel pane = new JPanel();
-	pane.setBorder(BorderFactory.createLineBorder(Color.black));
+//	JPanel pane = new JPanel();
+//	pane.setBorder(BorderFactory.createLineBorder(Color.black));
 
+for(int i=0;i<3;i++)
+	for(int j=0;j<3;j++)
+	{
+		borders[i][j] = new JPanel();
+		borders[i][j].setLayout(new GridLayout(3,3));
+		borders[i][j].setBorder(BorderFactory.createLineBorder(Color.black));
+		add(borders[i][j]);
+	}
 
 
 	for(int i=0;i<9;i++)
@@ -38,23 +46,56 @@ public GUI()
 		{
 			
 
-			borders[(i+1)%3][(j+1)%3]  = new JPanel();
-
+			
 
 			inputs[i][j] = new JTextField();
 			inputs[i][j].setText(puzzle[i][j]+"");
 			inputs[i][j].addActionListener(new Listener(inputs[i][j]));
 			inputs[i][j].addKeyListener(new keylistener());
 			inputs[i][j].setName(i+""+j+"");
-			inputs[i][j].setEditable(false);
-			pane.add(inputs[i][j]);
+			inputs[i][j].setEditable(true);
+			
+			//borders[(i)%3][(j)%3].add(inputs[i][j]);
 
 
 		}
 
 
+for(int i=0;i<9;i++)
+	for(int j=0;j<9;j++)
+	{
+		
+		
+		if(i>=0 && i<3 && j>=0 && j<3)
+			borders[0][0].add(inputs[i][j]);
+		if(i>=0 && i<3 && j>=3 && j<6)
+			borders[0][1].add(inputs[i][j]);
+		if(i>=0 && i<3 && j>=6 && j<9)
+			borders[0][2].add(inputs[i][j]);
 
-add(pane);
+
+
+		if(i>=3 && i<6 && j>=0 && j<3)
+			borders[1][0].add(inputs[i][j]);
+		if(i>=3 && i<6 && j>=3 && j<6)
+			borders[1][1].add(inputs[i][j]);
+		if(i>=3 && i<6 && j>=6 && j<9)
+			borders[1][2].add(inputs[i][j]);
+
+
+
+		if(i>=6 && i<9 && j>=0 && j<3)
+			borders[2][0].add(inputs[i][j]);
+		if(i>=6 && i<9 && j>=3 && j<6)
+			borders[2][1].add(inputs[i][j]);
+		if(i>=6 && i<9 && j>=6 && j<9)
+			borders[2][2].add(inputs[i][j]);
+	}
+
+
+
+
+//add(pane);
 }
 
 
