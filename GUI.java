@@ -32,7 +32,8 @@ public class GUI extends JFrame
       private JPanel[][] borders = new JPanel[3][3];
       private JPanel center_grid;
       private JPanel resetbutton;
-      private JTextField reset;
+	  private JTextField reset;
+	  private JButton submit;
 public GUI()
 {
 
@@ -48,9 +49,13 @@ public GUI()
 	add(resetbutton,BorderLayout.SOUTH);	
 	reset = new JTextField("Type 'c' to Check work");
 	reset.addKeyListener(new keylistener());
+	reset.addMouseListener(new mouselistener());
+
 	reset.setName("taher");
 	resetbutton.add(reset);
-	
+	submit = new JButton("Submit Solution");
+	submit.addMouseListener(new mouselistener());
+	resetbutton.add(submit);
 	empty = mask(empty);
 
 
@@ -95,11 +100,7 @@ for(int i=0;i<3;i++)
 
 			inputs[i][j].setText(puzzle[i][j]+"");
 			inputs[i][j].setEditable(false);
-				}
-			
-			//borders[(i)%3][(j)%3].add(inputs[i][j]);
-
-
+				}				
 		}
 
 
@@ -154,6 +155,26 @@ private boolean[][] mask(boolean[][] arr)
 		return arr;
 }
 
+
+private class mouselistener implements MouseListener
+{
+	public void mouseClicked(MouseEvent e)
+	{
+		reset.setText("");
+	}
+	    
+	public void mouseEntered(MouseEvent e) {}
+
+	public void mouseExited(MouseEvent e) {}
+
+	public void mousePressed(MouseEvent e) {}
+
+	public void mouseReleased(MouseEvent e) {}
+
+
+
+
+}
 
 private class Listener implements ActionListener
 {
@@ -218,6 +239,8 @@ if(!result.equals("")){
         			inputs[i][j].setEditable(false);
         			inputs[i][j].setForeground(Color.GREEN);
         			empty[i][j]=true;
+        			
+        			
         		}
         		else{
         			inputs[i][j].setForeground(Color.BLUE);
