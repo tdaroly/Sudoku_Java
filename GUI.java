@@ -17,7 +17,7 @@ public class GUI extends JFrame
        {0, 0, 0, 2, 0, 0, 9, 0, 0},
        {0, 0, 1, 9, 0, 4, 5, 7, 0}};
    private int [][] solution =
-   {{ 9, 3, 4, 1, 7, 2, 6, 8, 5},
+  																																																																																																																																											{{ 9, 3, 4, 1, 7, 2, 6, 8, 5},
  {7, 6, 5, 8, 9, 3, 2, 4, 1},
  {8, 1, 2, 6, 4, 5, 3, 9, 7},
  {4, 2, 9, 5, 8, 1, 7, 6, 3},
@@ -34,6 +34,7 @@ public class GUI extends JFrame
       private JPanel resetbutton;
 	  private JTextField reset;
 	  private JButton submit;
+	  private JButton give_up;
 public GUI()
 {
 
@@ -50,13 +51,18 @@ public GUI()
 	reset = new JTextField("Type 'c' to Check work");
 	reset.addKeyListener(new keylistener());
 	reset.addMouseListener(new mouselistener());
-
 	reset.setName("taher");
 	resetbutton.add(reset);
 	submit = new JButton("Submit Solution");
+	submit.setName("Solution Button");
 	submit.addMouseListener(new mouselistener());
 	resetbutton.add(submit);
 	empty = mask(empty);
+
+	give_up = new JButton("Give Up");
+	give_up.addMouseListener(new mouselistener());
+	give_up.setName("Give Up Button");
+	resetbutton.add(give_up);
 
 
 
@@ -161,6 +167,21 @@ private class mouselistener implements MouseListener
 	public void mouseClicked(MouseEvent e)
 	{
 		reset.setText("");
+		String button = ((JButton) e.getSource()).getName();
+		if(button == null)
+			button="";
+        if(button.equals("Give Up Button"))
+        {
+        	for(int i=0;i<9;i++)
+        		for(int j=0;j<9;j++)
+        		{
+        			inputs[i][j].setText(solution[i][j]+"");
+        			inputs[i][j].setEditable(false);
+        			if(!empty[i][j])
+ 						inputs[i][j].setForeground(Color.MAGENTA);
+        		}
+        }
+       
 	}
 	    
 	public void mouseEntered(MouseEvent e) {}
@@ -208,11 +229,11 @@ private class keylistener implements KeyListener
 	   	reset.setText("");
         //System.out.println(e);
         System.out.println(e);
-          if(e.getKeyChar() == 'a')
-        {
-        	inputs[2][6].requestFocusInWindow();
+         
+        
+        
         	//e.consume();
-        }
+        
     }
 
     /** Handle the key-pressed event from the text field. */
@@ -221,8 +242,10 @@ private class keylistener implements KeyListener
     	int i=0,j=0;
     	String result;
         String index=((JTextField) e.getSource()).getName();
+
         i = (int) index.charAt(0);
         j = (int) index.charAt(1);
+
         if(e.getKeyChar()=='c' && index.equals("taher"))
         {
         	
