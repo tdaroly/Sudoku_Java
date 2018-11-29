@@ -89,9 +89,6 @@ for(int i=0;i<3;i++)
 		for(int j=0;j<9;j++)
 		{
 			
-
-			
-
 			inputs[i][j] = new JTextField();
 			inputs[i][j].setBorder(BorderFactory.createLineBorder(new Color(214,212,247)));
 			inputs[i][j].setBackground(new Color(240,240,240));
@@ -201,7 +198,7 @@ private class mouselistener implements MouseListener
         	 time = (endTime - StartTime) / 1000.0/60.0;
         	     //    System.out.println("\nElapsed Time is:  " + time);
 Formatter fmt = new Formatter();
-    // Format to 2 decimal places in a 16 character field.
+    
     fmt = new Formatter();
     fmt.format("%6.2e", time);
     //System.out.println(fmt);
