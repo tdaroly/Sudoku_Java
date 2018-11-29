@@ -247,7 +247,7 @@ private class keylistener implements KeyListener
 
 	   	reset.setText("");
       
-        System.out.println(e);
+     //   System.out.println(e);
          
         
         

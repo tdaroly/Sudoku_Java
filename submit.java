@@ -12,16 +12,18 @@ public class submit extends JFrame
 
 	public submit()
 	{
-		super();
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(HEIGHT,WIDTH);
-		setLayout(new BorderLayout());
-		JPanel panel = new JPanel();
-		add(panel,BorderLayout.CENTER);
-
+		
+		JOptionPane.showMessageDialog(this, "You Pressed Button FOUR",  
+                                          "INFORMATION",  
+                                          JOptionPane.INFORMATION_MESSAGE);
 
 
 	}
 
-	
+	public static void main(String args[])
+	{
+		submit window = new submit();
+		window.setVisible(true);
+
+	}
 }
