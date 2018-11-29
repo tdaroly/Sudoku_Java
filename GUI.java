@@ -166,10 +166,16 @@ private class mouselistener implements MouseListener
 {
 	public void mouseClicked(MouseEvent e)
 	{
+		
 		reset.setText("");
-		String button = ((JButton) e.getSource()).getName();
-		if(button == null)
+		
+		String button;
+		System.out.println( (e.getSource()).getClass().getSimpleName());
+		if((e.getSource()).getClass().getSimpleName().equals("JButton"))
+			 button = ((JButton) e.getSource()).getName();		
+		else
 			button="";
+			
         if(button.equals("Give Up Button"))
         {
         	for(int i=0;i<9;i++)
