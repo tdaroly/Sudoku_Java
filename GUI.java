@@ -187,6 +187,13 @@ private class mouselistener implements MouseListener
  						inputs[i][j].setForeground(Color.MAGENTA);
         		}
         }
+        else if(button.equals("Solution Button"))        	
+        {
+        	submit window = new submit();
+        	window.setVisible(true);
+        	
+        	dispose();
+        }
        
 	}
 	    
