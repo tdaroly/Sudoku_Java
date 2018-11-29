@@ -17,7 +17,7 @@ public class GUI extends JFrame
        {0, 0, 0, 2, 0, 0, 9, 0, 0},
        {0, 0, 1, 9, 0, 4, 5, 7, 0}};
    private int [][] solution =
-  																																																																																																																																											{{ 9, 3, 4, 1, 7, 2, 6, 8, 5},
+{{ 9, 3, 4, 1, 7, 2, 6, 8, 5},
  {7, 6, 5, 8, 9, 3, 2, 4, 1},
  {8, 1, 2, 6, 4, 5, 3, 9, 7},
  {4, 2, 9, 5, 8, 1, 7, 6, 3},
@@ -35,6 +35,7 @@ public class GUI extends JFrame
 	  private JTextField reset;
 	  private JButton submit;
 	  private JButton give_up;
+	  private static int counter =0;
 public GUI()
 {
 
@@ -189,10 +190,14 @@ private class mouselistener implements MouseListener
         }
         else if(button.equals("Solution Button"))        	
         {
-        	submit window = new submit();
-        	window.setVisible(true);
+        //	submit window = new submit();
+        //	window.setVisible(true);
+        	JOptionPane.showMessageDialog(new GUI(), "Thank You For Playing",  
+                                          "Game End",  
+                                          JOptionPane.INFORMATION_MESSAGE);	
         	
         	dispose();
+        	System.exit(0);
         }
        
 	}
@@ -213,21 +218,11 @@ private class mouselistener implements MouseListener
 private class Listener implements ActionListener
 {
 	public Listener(JTextField input)
-	{
-
-			System.out.println(input.getText());
-	}
+	{}
 
 
 	public void actionPerformed(ActionEvent e)
-	{
-		
-		
-		System.out.println("Something is happening");
-		System.out.println(((JTextField) e.getSource()).getName());
-		System.out.println(e.getActionCommand());
-		
-	}	
+	{}	
 
 
 }
@@ -262,7 +257,7 @@ private class keylistener implements KeyListener
         if(e.getKeyChar()=='c' && index.equals("taher"))
         {
         	
-        //System.out.println("This is the start of how it ever ends"+ inputs[i][j].getText());
+       // System.out.println("This is the start of how it ever ends"+ inputs[i][j].getText());
         for( i=0;i<9;i++)
         	for( j=0;j<9;j++)
         	{
@@ -275,6 +270,7 @@ if(!result.equals("")){
         			inputs[i][j].setEditable(false);
         			inputs[i][j].setForeground(Color.GREEN);
         			empty[i][j]=true;
+        			
         			
         			
         		}
@@ -293,7 +289,7 @@ if(!index.equals("taher")){
     //    System.out.println(i+"_"+j);
       	int arrow= e.getKeyCode();
       	        //System.out.println(e.getName());
-      System.out.println(Integer.parseInt(index.substring(1,2)));
+     // System.out.println(Integer.parseInt(index.substring(1,2)));
       i = Integer.parseInt(index.substring(0,1));
       j=Integer.parseInt(index.substring(1,2));
           System.out.println(i+"_"+j);
@@ -301,10 +297,10 @@ if(!index.equals("taher")){
       	{
       		case 38:
       			for(int k=i-1;k>=0;k--)
-      			{	System.out.println("hahah"+"_"+inputs[k][j].getText());
-      				System.out.println(k+"____"+j);
+      			{	//System.out.println("hahah"+"_"+inputs[k][j].getText());
+      			//	System.out.println(k+"____"+j);
       				if(inputs[k][j].getText().equals(""))
-      					{	System.out.println("This is the start of how it ever ends");
+      					{	
       						inputs[k][j].requestFocusInWindow();
       						break;
       					}
@@ -313,10 +309,10 @@ if(!index.equals("taher")){
 
 			case 40:
       			for(int k=i+1;k<=8;k++)
-      			{	System.out.println("hahah"+"_"+inputs[k][j].getText());
-      				System.out.println(k+"____"+j);
+      			{	//System.out.println("hahah"+"_"+inputs[k][j].getText());
+      				//System.out.println(k+"____"+j);
       				if(inputs[k][j].getText().equals(""))
-      					{	System.out.println("This is the start of how it ever ends");
+      					{	
       						inputs[k][j].requestFocusInWindow();
       						break;
       					}
@@ -326,10 +322,10 @@ if(!index.equals("taher")){
 
       		case 39:
       				for(int k=j+1;k<=8;k++)
-      			{	System.out.println("hahah"+"_"+inputs[i][k].getText());
-      				System.out.println(k+"____"+j);
+      			{	//System.out.println("hahah"+"_"+inputs[i][k].getText());
+      			//	System.out.println(k+"____"+j);
       				if(inputs[i][k].getText().equals(""))
-      					{	System.out.println("This is the start of how it ever ends");
+      					{	
       						inputs[i][k].requestFocusInWindow();
       						break;
       					}
@@ -341,10 +337,10 @@ if(!index.equals("taher")){
       	
       		case 37:
       				for(int k=j-1;k>=0;k--)
-      			{	System.out.println("hahah"+"_"+inputs[i][k].getText());
-      				System.out.println(k+"____"+j);
+      			{	//System.out.println("hahah"+"_"+inputs[i][k].getText());
+      			//	System.out.println(k+"____"+j);
       				if(inputs[i][k].getText().equals(""))
-      					{	System.out.println("This is the start of how it ever ends");
+      					{	
       						inputs[i][k].requestFocusInWindow();
       						break;
       					}
