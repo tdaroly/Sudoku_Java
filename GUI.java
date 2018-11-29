@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import java.util.*;
 
 public class GUI extends JFrame
 {
@@ -35,6 +36,9 @@ public class GUI extends JFrame
 	  private JTextField reset;
 	  private JButton submit;
 	  private JButton give_up;
+	  private long StartTime;
+	  private long endTime;
+	  private double time;
 	  private static int counter =0;
 public GUI()
 {
@@ -64,6 +68,7 @@ public GUI()
 	give_up.addMouseListener(new mouselistener());
 	give_up.setName("Give Up Button");
 	resetbutton.add(give_up);
+    StartTime = System.currentTimeMillis();
 
 
 
@@ -145,7 +150,7 @@ for(int i=0;i<9;i++)
 
 
 
-//add(pane);
+
 }
 
 private boolean[][] mask(boolean[][] arr)
@@ -171,7 +176,7 @@ private class mouselistener implements MouseListener
 		reset.setText("");
 		
 		String button;
-		System.out.println( (e.getSource()).getClass().getSimpleName());
+		
 		if((e.getSource()).getClass().getSimpleName().equals("JButton"))
 			 button = ((JButton) e.getSource()).getName();		
 		else
@@ -192,7 +197,16 @@ private class mouselistener implements MouseListener
         {
         //	submit window = new submit();
         //	window.setVisible(true);
-        	JOptionPane.showMessageDialog(new GUI(), "Thank You For Playing",  
+        	 endTime = System.currentTimeMillis();
+        	 time = (endTime - StartTime) / 1000.0/60.0;
+        	     //    System.out.println("\nElapsed Time is:  " + time);
+Formatter fmt = new Formatter();
+    // Format to 2 decimal places in a 16 character field.
+    fmt = new Formatter();
+    fmt.format("%6.2e", time);
+    //System.out.println(fmt);
+
+        	JOptionPane.showMessageDialog(new GUI(), "Thank You For Playing, Your overall play time was"+fmt+"[min]",  
                                           "Game End",  
                                           JOptionPane.INFORMATION_MESSAGE);	
         	
@@ -233,9 +247,9 @@ private class keylistener implements KeyListener
 
 
 	   public void keyTyped(KeyEvent e) {
-//    	inputs[2][6].requestFocusInWindow();
+
 	   	reset.setText("");
-        //System.out.println(e);
+      
         System.out.println(e);
          
         
@@ -244,7 +258,7 @@ private class keylistener implements KeyListener
         
     }
 
-    /** Handle the key-pressed event from the text field. */
+    
     public void keyPressed(KeyEvent e) {
     
     	int i=0,j=0;
@@ -257,7 +271,7 @@ private class keylistener implements KeyListener
         if(e.getKeyChar()=='c' && index.equals("taher"))
         {
         	
-       // System.out.println("This is the start of how it ever ends"+ inputs[i][j].getText());
+       
         for( i=0;i<9;i++)
         	for( j=0;j<9;j++)
         	{
@@ -292,7 +306,7 @@ if(!index.equals("taher")){
      // System.out.println(Integer.parseInt(index.substring(1,2)));
       i = Integer.parseInt(index.substring(0,1));
       j=Integer.parseInt(index.substring(1,2));
-          System.out.println(i+"_"+j);
+        //  System.out.println(i+"_"+j);
       	switch(arrow)
       	{
       		case 38:
